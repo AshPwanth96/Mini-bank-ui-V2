@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../services/transaction.service';
-import { retry } from 'rxjs';
+
 
 @Component({
   selector: 'app-transaction',
@@ -49,7 +49,14 @@ export class TransactionComponent implements OnInit {
       return;
     }
 
-    const success = this.transactionService
+    const success = this.transactionService.withdraw(this.amount);
+
+    if(!success){
+      return;
+    }
+
+     this.loadUser();
+    this.amount = 0;
   }
 
  

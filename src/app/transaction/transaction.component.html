@@ -1,1 +1,25 @@
-<p>transaction works!</p>
+
+
+<h2>Transaction Page</h2>
+
+<label>Enter Amount</label>
+<input type="number" [(ngModel)]="amount"><br><br>
+
+<button (click)="deposit()">Deposit</button>
+<button (click)="withdraw()">Withdraw</button>
+
+<p>Balance: {{ user.balance }}</p>
+
+<hr>
+
+<h3>Transactions</h3>
+
+<ul *ngIf="user.transactions.length > 0; else noTx">
+  <li *ngFor="let t of user.transactions">
+    {{ t.type }} - ₹{{ t.amount }}
+  </li>
+</ul>
+
+<ng-template #noTx>
+  <p>No transactions yet</p>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -6,8 +7,9 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  private authStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
 
-
+  isLoggedIn$ = this.authStatus.asObservable()
 
 
   signup(userData: any): boolean{
@@ -51,6 +53,7 @@ export class AuthService {
 
     if(user){
       localStorage.setItem('currentUser', JSON.stringify(user));
+      this.authStatus.next(true);
       return true;      
     }else{
       return false;
@@ -60,6 +63,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('currentUser');
+    this.authStatus.next(false);
 
   }
 

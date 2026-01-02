@@ -1,1 +1,41 @@
-<p>fd works!</p>
+<h2>Fixed Deposit</h2>
+
+<p>Balance: <b>{{ user?.balance }}</b></p>
+
+<div>
+  <label>Amount:</label><br>
+  <input type="number" [(ngModel)]="amount"><br><br>
+
+  <label>Tenure:</label><br>
+  <select [(ngModel)]="tenure">
+    <option [ngValue]="1">1 Year</option>
+    <option [ngValue]="3">3 Years</option>
+    <option [ngValue]="5">5 Years</option>
+  </select><br><br>
+
+  <button (click)="createFD()">Open FD</button>
+</div>
+
+<div *ngIf="user?.fds?.length > 0">
+  <h3>My FDs</h3>
+  <table border="1">
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Interest</th>
+      <th>Tenure</th>
+      <th>Status</th>
+      <th>Maturity Amount</th>
+    </tr>
+    <tr *ngFor="let fd of user.fds">
+      <td>{{ fd.date | date:'shortDate' }}</td>
+      <td>{{ fd.amount }}</td>
+      <td>{{fd.interestRate}}</td>
+      <td>{{ fd.tenure }} Yr</td>
+      <td>{{fd.status}}</td>
+      <td>{{ fd.maturityAmount }}</td>
+
+    </tr>
+  </table>
+</div>
+

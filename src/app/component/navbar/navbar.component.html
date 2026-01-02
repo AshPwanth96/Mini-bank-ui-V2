@@ -1,0 +1,17 @@
+  <nav>
+  <div *ngIf="authService.isLoggedIn$ | async; else loggedOut">
+
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/transaction">transaction</a>
+    <a routerLink="/fd">fd</a>
+    <button (click)="onLogout()">Logout</button>
+  </div>
+
+
+  <ng-template #loggedOut>
+    <div>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/signup">Register</a>
+    </div>
+  </ng-template>
+</nav>

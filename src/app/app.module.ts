@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { FdComponent } from './fd/fd.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     DashboardComponent,
     TransactionComponent,
-    FdComponent
+    FdComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

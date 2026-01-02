@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FdService } from '../services/fd.service';
 
 @Component({
   selector: 'app-fd',
@@ -7,9 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FdComponent implements OnInit {
 
-  constructor() { }
+  user: any = null;
+  amount = 0;
+  tenure=1;
+  
+
+  constructor(private fdService:FdService) { }
 
   ngOnInit(): void {
+    this.loadUser();
   }
 
+    loadUser(){
+    const storedUser = localStorage.getItem('currentUser');
+
+    if(storedUser){
+      this.user = JSON.parse(storedUser);
+    }
+  }
+
+   createFD() {
+    if (this.amount < 500) {
+      alert('Minimum FD amount is 500');
+      return;
+    }
+
+    const success = this.fdService.createFD(this.amount, this.tenure);
+    if (success) {
+      alert('FD Created!');
+      this.loadUser(); 
+      this.amount = 0;
+    }
+  }
 }

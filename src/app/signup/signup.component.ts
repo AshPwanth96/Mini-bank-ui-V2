@@ -36,15 +36,17 @@ export class SignupComponent implements OnInit {
       return;
     }
 
+    
+    if (this.password.length < 6) {
+  alert("Password length should be at least 6 characters.");
+  return;
+}
+
     if(this.balance<1000){
       alert('initial balance should be atleaset 1000')
       return;
     }
 
-    if(this.password.length<6){
-      alert("Password length should be atleast 6");
-      return;
-    }
 
     const user = {
       name: this.name,
