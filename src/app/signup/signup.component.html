@@ -1,0 +1,21 @@
+<h2>SignUp Page</h2>
+
+<form (ngSubmit)="signup()">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="name" name="name"><br><br>
+
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email"><br><br>
+
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password"><br><br>
+
+    <label>Balance</label>
+    <input type="number" [(ngModel)]="balance" name="balance"><br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
+
